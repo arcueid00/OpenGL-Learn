@@ -84,6 +84,23 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink,
 {
     [super prepareOpenGL];
     
+    const GLubyte *glVersion = glGetString(GL_VERSION);
+    const GLubyte *glslVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
+    printf("OpenGL Version : %s\n", glVersion);
+    printf("GLSL Version : %s\n", glslVersion);
+    
+    GLint maxTextureUnits, maxTextureSize;
+    glGetIntegerv( GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextureUnits);
+    glGetIntegerv( GL_MAX_TEXTURE_SIZE, &maxTextureSize);
+    printf( "Max Texture Units : %d\n", maxTextureUnits);
+    printf( "Max Texture Size (width/Height) : %d\n", maxTextureSize);
+    
+    GLint maxIndexListVertices, maxIndexListCount;
+    glGetIntegerv( GL_MAX_ELEMENTS_VERTICES, &maxIndexListVertices);
+    glGetIntegerv( GL_MAX_ELEMENTS_INDICES, &maxIndexListCount);
+    printf( "Max IndexList Vertices : %d\n", maxIndexListVertices);
+    printf( "Max IndexList Count %d\n", maxIndexListCount);
+    
     window = self.window;
     size = self.bounds.size;
     
