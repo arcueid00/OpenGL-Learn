@@ -26,6 +26,7 @@ static MyGLView *instance = nil;
     Game                *game;
     NSWindow            *window;
     NSSize              size;
+    NSRect              viewportRect;
 }
 + (MyGLView*)sharedInstance
 {
@@ -150,6 +151,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink,
     [glContext lock];
     [glContext makeCurrentContext];
     
+    glViewport(viewportRect.origin.x, viewportRect.origin.y, viewportRect.size.width, viewportRect.size.height);
     game->Render();
     
     [glContext flushBuffer];
@@ -159,6 +161,40 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink,
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.window setTitle:[NSString stringWithFormat:@"Game(%.2f fps)", Time::fps]];
          }];
+}
+
+- (void)resetViewportSize
+{
+    NSSize frameSize = [self frame].size;
+    frameSize = [self convertSizeToBacking:frameSize];
+    const float kBaseAspect = 4.0f/3.0f;
+    if(frameSize.width / frameSize.height > kBaseAspect)
+    {
+        int width = int(frameSize.height*kBaseAspect);
+        viewportRect.origin.x = (frameSize.width-width)/2;
+        viewportRect.origin.y = 0;
+        viewportRect.size.width = width;
+        viewportRect.size.height = frameSize.height;
+    }
+    else
+    {
+        int height = int(frameSize.width/kBaseAspect);
+        viewportRect.origin.x = 0;
+        viewportRect.origin.y = (frameSize.height - height)/2;
+        viewportRect.size.width = frameSize.width;
+        viewportRect.size.height = height;
+    }
+    size = self.bounds.size;
+}
+
+-(void)pauseDisplayLink
+{
+    CVDisplayLinkStop(displayLink);
+}
+
+-(void)restartDisplayLink
+{
+    CVDisplayLinkStart(displayLink);
 }
 
 @end

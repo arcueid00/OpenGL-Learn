@@ -14,10 +14,15 @@
 #import <OpenGL/gl3.h>
 #include "Time.hpp"
 #include "Input.hpp"
+#include "Shader.hpp"
 
 class Game
 {
 private:
+    std::shared_ptr<ShaderProgram> program;
+    GLuint  vbo;
+    GLuint  vao;
+    
     float value1;
     float value2;
     

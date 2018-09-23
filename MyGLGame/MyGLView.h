@@ -16,4 +16,8 @@
 
 -(GLKVector2)mousePosition;
 
+-(void)pauseDisplayLink;
+-(void)restartDisplayLink;
+-(void)resetViewportSize;
+
 @end
