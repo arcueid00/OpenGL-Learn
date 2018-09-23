@@ -23,8 +23,6 @@ private:
     GLuint  vbo;
     GLuint  vao;
     
-    float value1;
-    float value2;
     
 public:
     Game();
