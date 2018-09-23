@@ -22,6 +22,7 @@ private:
     std::shared_ptr<ShaderProgram> program;
     GLuint  vbo;
     GLuint  vao;
+    GLuint  indexBuffer;
     
     
 public:
