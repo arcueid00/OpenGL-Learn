@@ -97,6 +97,25 @@ ShaderProgram::~ShaderProgram()
     glDeleteProgram(program);
 }
 
+void ShaderProgram::SetUniform(const std::string& name, int value)
+{
+    GLint location;
+    if(uniformLocationMap.find(name) == uniformLocationMap.end())
+    {
+        location = glGetUniformLocation( program, name.c_str());
+        if( location < 0)
+        {
+            throw GameError( "ShaderProgram::SetUniform() Canot location a uniform value : %s", name.c_str());
+        }
+        uniformLocationMap[name] = location;
+    }
+    else
+    {
+        location = uniformLocationMap[name];
+    }
+    glUniform1i( location, value);
+}
+
 void ShaderProgram::Use()
 {
     glUseProgram(program);

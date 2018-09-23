@@ -14,6 +14,7 @@ struct VertexData
 {
     GLfloat pos[3];
     GLfloat color[4];
+    GLfloat uv[2];
 };
 
 Game::Game()
@@ -21,10 +22,10 @@ Game::Game()
     program = std::make_shared<ShaderProgram>( "myshader.vsh", "myshader.fsh");
     
     std::vector<VertexData> data;
-    data.push_back( {{ -0.5f, -0.5f,0.0f}, {1.0f, 0.0f, 0.0f, 1.0f}});
-    data.push_back( {{ 0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f, 1.0f}});
-    data.push_back( {{ 0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f}});
-    data.push_back( {{ -0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}});
+    data.push_back( {{ -0.5f, -0.5f,0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f}});
+    data.push_back( {{ 0.5f, -0.5f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {1.0f, 0.0f}});
+    data.push_back( {{ 0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f},{1.0f, 1.0f}});
+    data.push_back( {{ -0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}});
     
     std::vector<GLushort> indices;
     indices.push_back(0);
@@ -47,7 +48,14 @@ Game::Game()
     glBindVertexArray(vao);
     glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, sizeof(VertexData), ((VertexData*)0)->pos );
     glVertexAttribPointer(1,4, GL_FLOAT, GL_FALSE, sizeof(VertexData), ((VertexData*)0)->color);
+    glVertexAttribPointer(2,2, GL_FLOAT, GL_FALSE, sizeof(VertexData), ((VertexData*)0)->uv);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    
+    texture = std::make_shared<Texture>( "texture.png" );
+    glActiveTexture(GL_TEXTURE0);
+    texture->Bind();
+    program->Use();
+    program->SetUniform( "tex", 0);
     
     glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -75,6 +83,7 @@ void Game::Render()
     glBindVertexArray(vao);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (void*)0);
     
     

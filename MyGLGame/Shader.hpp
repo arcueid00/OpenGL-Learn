@@ -12,7 +12,7 @@
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl3.h>
 #include <string>
-
+#include <map>
 
 class Shader
 {
@@ -33,12 +33,14 @@ private:
     GLuint program;
     std::shared_ptr<Shader> vshader;
     std::shared_ptr<Shader> fshader;
+    std::map<std::string, GLint> uniformLocationMap;
 
 public:
     ShaderProgram(const std::string& vshName, const std::string& fshName);
     ~ShaderProgram();
     
 public:
+    void    SetUniform(const std::string& name, int value);
     void    Use();
 };
 

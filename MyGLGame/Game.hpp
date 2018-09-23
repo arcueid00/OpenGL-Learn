@@ -15,6 +15,7 @@
 #include "Time.hpp"
 #include "Input.hpp"
 #include "Shader.hpp"
+#include "Texture.hpp"
 
 class Game
 {
@@ -23,6 +24,7 @@ private:
     GLuint  vbo;
     GLuint  vao;
     GLuint  indexBuffer;
+    std::shared_ptr<Texture> texture;
     
     
 public:
