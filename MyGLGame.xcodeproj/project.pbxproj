@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B042888321559553005ACA17 /* Input.mm in Sources */ = {isa = PBXBuildFile; fileRef = B042888121559553005ACA17 /* Input.mm */; };
+		B05F72FC2157A68200BFA36B /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05F72FA2157A68200BFA36B /* Shader.cpp */; };
 		B0BA13BB20EC10DA0011A206 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BA13BA20EC10DA0011A206 /* AppDelegate.m */; };
 		B0BA13BE20EC10DA0011A206 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B0BA13BD20EC10DA0011A206 /* ViewController.mm */; };
 		B0BA13C020EC10DB0011A206 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0BA13BF20EC10DB0011A206 /* Assets.xcassets */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		B042888121559553005ACA17 /* Input.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Input.mm; sourceTree = "<group>"; };
 		B042888221559553005ACA17 /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		B05F72FA2157A68200BFA36B /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		B05F72FB2157A68200BFA36B /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		B0BA13B620EC10DA0011A206 /* MyGLGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGLGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BA13B920EC10DA0011A206 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0BA13BA20EC10DA0011A206 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				B042888221559553005ACA17 /* Input.hpp */,
 				B0D84AAF215590E500C9DD39 /* Time.hpp */,
 				B0D84AAA21558EED00C9DD39 /* StringSupport.hpp */,
+				B05F72FA2157A68200BFA36B /* Shader.cpp */,
+				B05F72FB2157A68200BFA36B /* Shader.hpp */,
 				B0BA13B920EC10DA0011A206 /* AppDelegate.h */,
 				B0BA13BA20EC10DA0011A206 /* AppDelegate.m */,
 				B0BA13BC20EC10DA0011A206 /* ViewController.h */,
@@ -205,6 +210,7 @@
 				B0D0D2DA20ED74D40059D178 /* WindowController.m in Sources */,
 				B0BA13BE20EC10DA0011A206 /* ViewController.mm in Sources */,
 				B0D84AAB21558EED00C9DD39 /* StringSupport.mm in Sources */,
+				B05F72FC2157A68200BFA36B /* Shader.cpp in Sources */,
 				B0BA13D420EC116B0011A206 /* MyGLView.mm in Sources */,
 				B0D2CE0E2102963400185C3A /* Game.cpp in Sources */,
 				B042888321559553005ACA17 /* Input.mm in Sources */,
